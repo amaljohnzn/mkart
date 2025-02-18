@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("https://mkart-amaljohnzns-projects.vercel.app/Customer/profile", {
+        const response = await axios.get("https://mkart-amaljohnzns-projects.vercel.app/ath/profile", {
           withCredentials: true,
         });
 
