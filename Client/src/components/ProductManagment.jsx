@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button, Form, Modal, Alert } from "react-bootstrap";
 
-const API_URL = "http://localhost:5001/product";
+const API_URL = "https://mkart-amaljohnzns-projects.vercel.app/product";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ const ProductManagement = () => {
   useEffect(() => {
     const fetchProfileAndProducts = async () => {
       try {
-        const profileResponse = await axios.get('http://localhost:5001/Customer/profile', { withCredentials: true });
+        const profileResponse = await axios.get('https://mkart-amaljohnzns-projects.vercel.app/Customer/profile', { withCredentials: true });
         if (profileResponse.data?.user?.role === 'admin') {
           setIsAdmin(true);
           const productsResponse = await axios.get(API_URL, { withCredentials: true });
@@ -52,12 +52,12 @@ const ProductManagement = () => {
     setError(null);
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5001/product/${currentProduct.productname}`, currentProduct, { withCredentials: true });
+        await axios.put(`https://mkart-amaljohnzns-projects.vercel.app/product/${currentProduct.productname}`, currentProduct, { withCredentials: true });
 
         setProducts((prev) => prev.map((product) => (product.productname === currentProduct.productname ? currentProduct : product)));
       } else {
         const newProduct = { ...currentProduct, productPrice: Number(currentProduct.productPrice) };
-        await axios.post('http://localhost:5001/product', newProduct, { withCredentials: true });
+        await axios.post('https://mkart-amaljohnzns-projects.vercel.app/product', newProduct, { withCredentials: true });
         setProducts((prev) => [...prev, newProduct]);
       }
       handleCloseModal();
@@ -72,7 +72,7 @@ const ProductManagement = () => {
     setLoadingAction(true);
     setError(null);
     try {
-      await axios.delete(`http://localhost:5001/product/${productname}`, { withCredentials: true });
+      await axios.delete(`https://mkart-amaljohnzns-projects.vercel.app/product/${productname}`, { withCredentials: true });
       setProducts(products.filter((product) => product.productname !== productname));
     } catch (error) {
       setError("Error deleting product. Please try again.");

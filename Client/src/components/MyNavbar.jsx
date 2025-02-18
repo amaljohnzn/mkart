@@ -22,7 +22,6 @@ const MyNavbar = ({ isAuthenticated, user,  cartItems = [] }) => {
               </>
             ) : (
               <>
-               {/* ✅ Show "Admin Dashboard" & "Customer" links ONLY if user is an admin */}
                {user && user.role === "admin" && (
                   <>
                     <Nav.Link as={Link} to="/customer">Customer</Nav.Link>

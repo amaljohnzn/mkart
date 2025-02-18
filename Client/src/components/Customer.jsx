@@ -11,7 +11,7 @@ const Customer = () => {
   useEffect(() => {
     const fetchProfileAndCustomers = async () => {
       try {
-        const profileResponse = await axios.get('http://localhost:5001/Customer/profile', {
+        const profileResponse = await axios.get('https://mkart-amaljohnzns-projects.vercel.app/Customer/profile', {
           withCredentials: true,
         });
 
@@ -22,7 +22,7 @@ const Customer = () => {
             setIsAdmin(true);
 
             // Fetch customer list
-            const customersResponse = await axios.get('http://localhost:5001/Customer/allCustomer', {
+            const customersResponse = await axios.get('https://mkart-amaljohnzns-projects.vercel.app/Customer/allCustomer', {
               withCredentials: true,
             });
 

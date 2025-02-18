@@ -9,7 +9,7 @@ const Logout = ({ setIsAuthenticated, setUser }) => {
   useEffect(() => {
     const logoutUser = async () => {
       try {
-        await axios.post("http://localhost:5001/ath/logout", {}, { withCredentials: true });
+        await axios.post("https://mkart-amaljohnzns-projects.vercel.app/ath/logout", {}, { withCredentials: true });
 
         // Clear authentication state
         setIsAuthenticated(false);

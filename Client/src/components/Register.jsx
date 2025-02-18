@@ -25,7 +25,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5001/ath/register', {
+      const response = await axios.post('https://mkart-amaljohnzns-projects.vercel.app/ath/register', {
         username,
         password,
         role,
