@@ -36,13 +36,12 @@ const Home = () => {
             </p>
           </Col>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Responsive Image */}
           <Col xs={12} md={6} className="text-center order-md-2">
             <img
               src={main}
               alt="Shopping"
-              className="img-fluid rounded"
-              style={{ maxWidth: "100%", height: "auto" }}
+              className="img-fluid w-100 rounded" // Ensures full responsiveness
             />
           </Col>
         </Row>
