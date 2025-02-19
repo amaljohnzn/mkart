@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
-import productImg from '../assets/product.png'
+import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import productImg from '../assets/product.png';
 
 function Product({ addToCart }) {
   const [products, setProducts] = useState([]);
@@ -30,39 +29,44 @@ function Product({ addToCart }) {
   }, []);
 
   return (
-    <div>
-      <h1>Products</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+    <Container className="py-4">
+      <h1 className="text-center mb-4">Products</h1>
+      
+      <Row className="justify-content-center">
         {products.length > 0 ? (
           products.map((product) => (
-            <Card key={product._id} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={productImg } />
-              <Card.Body>
-                <Card.Title>{product.productname}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Category: {product.productcategory}
-                </Card.Subtitle>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Price: ${product.productPrice}
-                </Card.Subtitle>
-                <Button 
-  variant="primary" 
-  onClick={() => {
-    console.log("Adding to cart:", product); // Debug log
-    addToCart(product);
-  }}
->
-  Add to Cart
-</Button>
-
-              </Card.Body>
-            </Card>
+            <Col key={product._id} xs={12} sm={6} md={4} lg={3} className="mb-4">
+              <Card className="shadow-sm h-100">
+                <Card.Img variant="top" src={productImg} className="p-3" />
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title>{product.productname}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Category: {product.productcategory}
+                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Price: ${product.productPrice}
+                  </Card.Subtitle>
+                  <Button 
+                    variant="primary" 
+                    className="mt-auto"
+                    onClick={() => {
+                      console.log("Adding to cart:", product);
+                      addToCart(product);
+                    }}
+                  >
+                    Add to Cart
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
           ))
         ) : (
-          <p>Loading...</p>
+          <Col xs={12} className="text-center">
+            <p>Loading...</p>
+          </Col>
         )}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
 

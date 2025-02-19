@@ -52,12 +52,11 @@ const ProductManagement = () => {
     setError(null);
     try {
       if (isEditing) {
-        await axios.put(`https://mkart-amaljohnzns-projects.vercel.app/product/${currentProduct.productname}`, currentProduct, { withCredentials: true });
-
+        await axios.put(`${API_URL}/${currentProduct.productname}`, currentProduct, { withCredentials: true });
         setProducts((prev) => prev.map((product) => (product.productname === currentProduct.productname ? currentProduct : product)));
       } else {
         const newProduct = { ...currentProduct, productPrice: Number(currentProduct.productPrice) };
-        await axios.post('https://mkart-amaljohnzns-projects.vercel.app/product', newProduct, { withCredentials: true });
+        await axios.post(API_URL, newProduct, { withCredentials: true });
         setProducts((prev) => [...prev, newProduct]);
       }
       handleCloseModal();
@@ -72,7 +71,7 @@ const ProductManagement = () => {
     setLoadingAction(true);
     setError(null);
     try {
-      await axios.delete(`https://mkart-amaljohnzns-projects.vercel.app/product/${productname}`, { withCredentials: true });
+      await axios.delete(`${API_URL}/${productname}`, { withCredentials: true });
       setProducts(products.filter((product) => product.productname !== productname));
     } catch (error) {
       setError("Error deleting product. Please try again.");
@@ -97,29 +96,37 @@ const ProductManagement = () => {
       <h2>Product Management</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Button variant="primary" onClick={() => handleOpenModal()}>Add Product</Button>
-      <Table striped bordered hover className="mt-3">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price ($)</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.productname}>
-              <td>{product.productname}</td>
-              <td>{product.productcategory}</td>
-              <td>${product.productPrice}</td>
-              <td>
-                <Button variant="warning" size="sm" onClick={() => handleOpenModal(product)}>Update</Button>
-                <Button variant="danger" size="sm" className="ms-2" onClick={() => handleDelete(product.productname)}>Delete</Button>
-              </td>
+
+      {/* ⬇ Make the table responsive without external CSS */}
+      <div style={{ overflowX: "auto" }} className="mt-3">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price ($)</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.productname}>
+                <td>{product.productname}</td>
+                <td>{product.productcategory}</td>
+                <td>${product.productPrice}</td>
+                <td>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                    <Button variant="warning" size="sm" onClick={() => handleOpenModal(product)}>Update</Button>
+                    <Button variant="danger" size="sm" onClick={() => handleDelete(product.productname)}>Delete</Button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+
+      {/* Modal for Adding/Updating Products */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>{isEditing ? "Update Product" : "Add Product"}</Modal.Title>
