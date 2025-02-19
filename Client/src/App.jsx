@@ -75,7 +75,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} fetchUser={fetchUser} />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated}  />} />1
 
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
