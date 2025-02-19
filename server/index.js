@@ -19,8 +19,20 @@ app.use(cookieParser())
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
-
 const allowedOrigins = ["http://localhost:5175", "https://mkart-frontend.vercel.app"];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Allow sending cookies
+}));
+
+/*const allowedOrigins = ["http://localhost:5175", "https://mkart-frontend.vercel.app"];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -31,7 +43,7 @@ app.use(cors({
     }
   },
   credentials: true, // Allow cookies if needed
-}));
+})); */
 //app.use(cors({
   //origin: process.env.FRONTEND_URL,
   //credentials: true,      
