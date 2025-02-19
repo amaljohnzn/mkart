@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "react-bootstrap/Card";
-import { Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import profileImg from "../assets/profile.jpg";
 
 function Profile() {
   const [profile, setProfile] = useState(null);
@@ -11,13 +11,12 @@ function Profile() {
       try {
         const response = await axios.get(
           "https://mkart-amaljohnzns-projects.vercel.app/Customer/profile",
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
+
         console.log("Profile Data from API:", response.data);
 
-        if (response.data && response.data.user) {
+        if (response.data?.user) {
           setProfile(response.data.user);
         } else {
           console.error("Invalid response structure", response.data);
@@ -30,34 +29,28 @@ function Profile() {
     fetchProfile();
   }, []);
 
-  useEffect(() => {
-    console.log("Updated Profile State:", profile);
-  }, [profile]);
-
   return (
-    <>
-      <Container>
-        <div>
-          <h1>PROFILE</h1>
+    <Container className="d-flex justify-content-center align-items-center vh-100">
+      <Row className="w-100">
+        <Col sm="10" md="6" lg="4" className="mx-auto text-center">
+          <h1 className="mb-4">PROFILE</h1>
           {profile ? (
-            <div>
-              <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src="src\assets\profile.jpg" />
-                <Card.Body>
-                  <Card.Title> User Name : {profile.username}</Card.Title>
-                  <br />
-                  <Card.Subtitle className="mb-2 text-muted">
-                    User Role : {profile.role}
-                  </Card.Subtitle>
-                </Card.Body>
-              </Card>
-            </div>
+            <Card className="shadow-lg">
+              <Card.Img variant="top" src={profileImg} />
+              <Card.Body>
+                <Card.Title>Username: {profile.username}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Role: {profile.role}
+                </Card.Subtitle>
+              </Card.Body>
+            </Card>
           ) : (
             <p>Loading...</p>
           )}
-        </div>
-      </Container>
-    </>
+        </Col>
+      </Row>
+    </Container>
   );
 }
+
 export default Profile;
