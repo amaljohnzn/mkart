@@ -29,11 +29,11 @@ function Login({ setUserRole }) {
       );
 
       setSuccess("Login successful! Redirecting...");
-      await fetchUser();
+      //await fetchUser();
 
       setTimeout(() => {
         console.log("Redirecting to Profile...");
-        navigate("/Profile");
+        navigate("/");
       }, 2000);
       
     } catch (err) {
