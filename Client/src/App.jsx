@@ -37,6 +37,7 @@ function App() {
         if (response.data?.user) {
           setUser(response.data.user);
           setIsAuthenticated(true);
+          window.location.reload();
         } else {
           setUser(null);
           setIsAuthenticated(false);
