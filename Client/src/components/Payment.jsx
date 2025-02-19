@@ -167,7 +167,6 @@ const Payment = () => {
         </Col>
       </Row>
 
-      {/* Submit Button */}
       <Row className="mt-4">
         <Col md={{ span: 6, offset: 3 }}>
           <Button variant="primary" type="submit" className="w-100 shadow" onClick={handleSubmit}>

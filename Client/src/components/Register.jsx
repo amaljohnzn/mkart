@@ -49,7 +49,8 @@ function Register() {
           {success && <Alert variant="success" className="text-center">{success}</Alert>}
 
           <Form noValidate onSubmit={handleSubmit} className="p-4 shadow-lg rounded">
-            {/* Username */}
+            
+            {/* Form*/}
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -60,7 +61,6 @@ function Register() {
               />
             </Form.Group>
 
-            {/* Password */}
             <Form.Group className="mb-3" controlId="formPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -71,7 +71,6 @@ function Register() {
               />
             </Form.Group>
 
-            {/* Role Selection */}
             <Form.Group className="mb-3" controlId="formRole">
               <Form.Label>Role</Form.Label>
               <Form.Select value={role} onChange={(e) => setRole(e.target.value)}>
@@ -81,7 +80,6 @@ function Register() {
               </Form.Select>
             </Form.Group>
 
-            {/* Submit Button */}
             <Button variant="primary" type="submit" className="w-100">
               Register
             </Button>

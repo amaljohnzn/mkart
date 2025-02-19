@@ -11,7 +11,6 @@ const Logout = ({ setIsAuthenticated, setUser }) => {
       try {
         await axios.post("https://mkart-amaljohnzns-projects.vercel.app/ath/logout", {}, { withCredentials: true });
 
-        // Clear authentication state
         setIsAuthenticated(false);
         setUser(null);
       } catch (error) {

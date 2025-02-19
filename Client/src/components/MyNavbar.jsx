@@ -13,25 +13,20 @@ const MyNavbar = ({ isAuthenticated, user, cartItems = [] }) => {
           Mkart
         </Navbar.Brand>
 
-        {/* Cart & Logout - Always Visible for Logged-In Users */}
         {isAuthenticated && (
           <div className="d-flex align-items-center order-lg-2">
-            {/* Cart - Only show when user is logged in */}
             <Nav.Link as={Link} to="/cart" className="position-relative me-3">
               🛒 Cart <span className="badge bg-light text-dark">{cartItems.length}</span>
             </Nav.Link>
 
-            {/* Logout Button */}
             <Nav.Link as={Link} to="/logout">
               <Button variant="danger">LogOut</Button>
             </Nav.Link>
           </div>
         )}
 
-        {/* Mobile Toggle Button */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="order-lg-3" />
 
-        {/* Collapsible Links */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex align-items-center flex-column flex-lg-row text-center text-lg-start">
             <Nav.Link as={Link} to="/" className="mx-2">Home</Nav.Link>

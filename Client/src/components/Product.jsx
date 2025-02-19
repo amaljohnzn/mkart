@@ -16,7 +16,7 @@ function Product({ addToCart }) {
         console.log("Product Data from API:", response.data);
 
         if (response.data.length > 0) {
-          setProducts(response.data); // Store all products
+          setProducts(response.data); 
         } else {
           console.error("No products found");
         }

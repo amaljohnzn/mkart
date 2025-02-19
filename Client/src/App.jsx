@@ -22,7 +22,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-  //const [refreshNav, setRefreshNav] = useState(false);
 
   
   
@@ -38,7 +37,6 @@ function App() {
         if (response.data?.user) {
           setUser(response.data.user);
           setIsAuthenticated(true);
-       ///   setRefreshNav(prev => !prev);
         } else {
           setUser(null);
           setIsAuthenticated(false);
@@ -55,7 +53,6 @@ function App() {
 
  
 
-  // Cart Functions
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
   };
@@ -65,12 +62,12 @@ function App() {
   };
 
   return (
-    <Router>
+    <div >
+<Router>
       <MyNavbar 
         isAuthenticated={isAuthenticated} 
         user={user} 
         cartItems={cartItems} 
-      //  refreshNav={refreshNav}
       />
 
       <Routes>
@@ -91,6 +88,8 @@ function App() {
 
       </Routes>
     </Router>
+    </div>
+    
   );
 }
 
