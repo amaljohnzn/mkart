@@ -13,17 +13,20 @@ const MyNavbar = ({ isAuthenticated, user, cartItems = [] }) => {
           Mkart
         </Navbar.Brand>
 
-        {/* Cart & Logout - Always Visible */}
-        <div className="d-flex align-items-center order-lg-2">
-          <Nav.Link as={Link} to="/cart" className="position-relative me-3">
-            🛒 Cart <span className="badge bg-light text-dark">{cartItems.length}</span>
-          </Nav.Link>
-          {isAuthenticated && (
+        {/* Cart & Logout - Always Visible for Logged-In Users */}
+        {isAuthenticated && (
+          <div className="d-flex align-items-center order-lg-2">
+            {/* Cart - Only show when user is logged in */}
+            <Nav.Link as={Link} to="/cart" className="position-relative me-3">
+              🛒 Cart <span className="badge bg-light text-dark">{cartItems.length}</span>
+            </Nav.Link>
+
+            {/* Logout Button */}
             <Nav.Link as={Link} to="/logout">
               <Button variant="danger">LogOut</Button>
             </Nav.Link>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Mobile Toggle Button */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="order-lg-3" />
