@@ -8,16 +8,17 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div
-        className="text-center text-white p-5 d-flex flex-column justify-content-center align-items-center"
+        className="text-center text-white d-flex flex-column justify-content-center align-items-center"
         style={{
           backgroundImage: `url(${slide1})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "400px",
+          minHeight: "40vh", // Adjusts dynamically
           width: "100%",
+          position: "relative",
         }}
       >
-        <h1 className="fw-bold">Welcome to Mkart</h1>
+        
       </div>
 
       {/* Content Section */}
@@ -38,11 +39,18 @@ const Home = () => {
 
           {/* Right Column - Responsive Image */}
           <Col xs={12} md={6} className="text-center order-md-2">
-            <img
-              src={main}
-              alt="Shopping"
-              className="img-fluid w-100 rounded" // Ensures full responsiveness
-            />
+            <div className="w-100 d-flex justify-content-center">
+              <img
+                src={main}
+                alt="Shopping"
+                className="img-fluid rounded"
+                style={{
+                  maxWidth: "100%", // Ensures it never overflows
+                  height: "auto", // Maintains aspect ratio
+                  objectFit: "cover", // Prevents distortion
+                }}
+              />
+            </div>
           </Col>
         </Row>
       </Container>

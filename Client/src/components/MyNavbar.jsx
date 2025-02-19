@@ -2,47 +2,53 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./style.css"
+import "./style.css";
 
-const MyNavbar = ({ isAuthenticated, user,  cartItems = [] }) => {
+const MyNavbar = ({ isAuthenticated, user, cartItems = [] }) => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar bg="primary" variant="dark" expand="lg" className="py-3">
       <Container>
-        <Navbar.Brand as={Link} to="/">Mkart</Navbar.Brand>
+        {/* Brand */}
+        <Navbar.Brand as={Link} to="/" className="fw-bold fs-4">
+          Mkart
+        </Navbar.Brand>
+
+        {/* Mobile Toggle Button */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+        {/* Navbar Links */}
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            
+          <Nav className="ms-auto d-flex align-items-center">
+            <Nav.Link as={Link} to="/" className="mx-2">Home</Nav.Link>
 
             {!isAuthenticated ? (
               <>
-                <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                <Nav.Link as={Link} to="/register" className="mx-2">Register</Nav.Link>
+                <Nav.Link as={Link} to="/login" className="mx-2">Login</Nav.Link>
               </>
             ) : (
               <>
-               {user && user.role === "admin" && (
+                {/* Admin Links */}
+                {user && user.role === "admin" && (
                   <>
-                    <Nav.Link as={Link} to="/customer">Customer</Nav.Link>
-                    <Nav.Link as={Link} to="/AdminDash">Admin Dashboard</Nav.Link>
-                    <Nav.Link as={Link} to="/ProductManagment">ProductManagment</Nav.Link>
+                    <Nav.Link as={Link} to="/customer" className="mx-2">Customer</Nav.Link>
+                    <Nav.Link as={Link} to="/AdminDash" className="mx-2">Admin Dashboard</Nav.Link>
+                    <Nav.Link as={Link} to="/ProductManagment" className="mx-2">Product Management</Nav.Link>
                   </>
                 )}
-                <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-               
-               
-                <Nav.Link as={Link} to="/product">Product</Nav.Link>
+
+                {/* User Links */}
+                <Nav.Link as={Link} to="/profile" className="mx-2">Profile</Nav.Link>
+                <Nav.Link as={Link} to="/product" className="mx-2">Product</Nav.Link>
+
+                {/* Cart & Logout */}
+                <Nav.Link as={Link} to="/cart" className="mx-2 position-relative">
+                  🛒 Cart <span className="badge bg-light text-dark">{cartItems.length}</span>
+                </Nav.Link>
+
                 <Nav.Link as={Link} to="/logout">
                   <Button variant="danger" className="ms-2">LogOut</Button>
                 </Nav.Link>
-            <Nav.Link as={Link} to="/cart" className="ms-auto">
-              🛒 Cart <span>({cartItems.length})</span>
-            </Nav.Link>
-
-               
-                
-                
               </>
             )}
           </Nav>
