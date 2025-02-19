@@ -29,6 +29,7 @@ function Login({ setUserRole }) {
       );
 
       setSuccess("Login successful! Redirecting...");
+      await fetchUser();
 
       setTimeout(() => {
         console.log("Redirecting to Profile...");

@@ -44,8 +44,6 @@ exports.login = async (req, res) => {
             sameSite: "None",
         })
         res.status(200).json({ message: "logged in sucess" })
-
-
     }
     catch (error) {
         return res.status(500).json({ message: "Server error", error: error.message });
