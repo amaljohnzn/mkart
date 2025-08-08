@@ -12,7 +12,7 @@ const Customer = () => {
     const fetchProfileAndCustomers = async () => {
       try {
         const profileResponse = await axios.get(
-          "https://mkart-amaljohnzns-projects.vercel.app/Customer/profile",
+          "https://mkart-seven.vercel.app/Customer/profile",
           { withCredentials: true }
         );
 
@@ -22,7 +22,7 @@ const Customer = () => {
           setIsAdmin(true);
 
           const customersResponse = await axios.get(
-            "https://mkart-amaljohnzns-projects.vercel.app/Customer/allCustomer",
+            "https://mkart-seven.vercel.app/Customer/allCustomer",
             { withCredentials: true }
           );
 

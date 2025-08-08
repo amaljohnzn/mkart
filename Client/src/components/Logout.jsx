@@ -9,7 +9,7 @@ const Logout = ({ setIsAuthenticated, setUser }) => {
   useEffect(() => {
     const logoutUser = async () => {
       try {
-        await axios.post("https://mkart-amaljohnzns-projects.vercel.app/ath/logout", {}, { withCredentials: true });
+        await axios.post("https://mkart-seven.vercel.app//ath/logout", {}, { withCredentials: true });
 
         setIsAuthenticated(false);
         setUser(null);

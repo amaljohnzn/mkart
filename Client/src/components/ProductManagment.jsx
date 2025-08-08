@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button, Form, Modal, Alert } from "react-bootstrap";
 
-const API_URL = "https://mkart-amaljohnzns-projects.vercel.app/product";
+const API_URL = "https://mkart-seven.vercel.app/product";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +17,7 @@ const ProductManagement = () => {
   useEffect(() => {
     const fetchProfileAndProducts = async () => {
       try {
-        const profileResponse = await axios.get('https://mkart-amaljohnzns-projects.vercel.app/Customer/profile', { withCredentials: true });
+        const profileResponse = await axios.get('https://mkart-seven.vercel.app/Customer/profile', { withCredentials: true });
         if (profileResponse.data?.user?.role === 'admin') {
           setIsAdmin(true);
           const productsResponse = await axios.get(API_URL, { withCredentials: true });

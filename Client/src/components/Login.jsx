@@ -23,7 +23,7 @@ function Login({ setUserRole }) {
 
     try {
       const response = await axios.post(
-        "https://mkart-amaljohnzns-projects.vercel.app/ath/login",
+        "https://mkart-seven.vercel.app/ath/login",
         { username, password },
         { withCredentials: true }
       );

@@ -10,7 +10,7 @@ function Profile() {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          "https://mkart-amaljohnzns-projects.vercel.app/Customer/profile",
+          "https://mkart-seven.vercel.app/profile",
           { withCredentials: true }
         );
 

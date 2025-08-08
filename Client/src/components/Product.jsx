@@ -9,7 +9,7 @@ function Product({ addToCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://mkart-amaljohnzns-projects.vercel.app/product", {
+        const response = await axios.get("https://mkart-seven.vercel.app/product", {
           withCredentials: true,
         });
 
